@@ -35,14 +35,18 @@ function WCP.UI.CthunFrame.create()
 
   print("Frame before creation:", frame)
   
-  local frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
-frame:SetBackdrop({
-    bgFile = "Interface\\AddOns\\WrongCthunPlanner\\Images\\CThun_Positioning.tga",
-    edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-    tile = false,
-    edgeSize = 32,
-    insets = { left = 12, right = 12, top = 12, bottom = 12 }
-})
+  if not self.frame then
+        self.frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
+        self.frame:SetSize(500, 500)
+        self.frame:SetPoint("CENTER")
+        self.frame:SetBackdrop({
+            bgFile = "Interface\\AddOns\\WrongCthunPlanner\\Images\\CThun_Positioning.tga",
+            edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+            tile = false,
+            edgeSize = 32,
+            insets = { left = 4, right = 4, top = 4, bottom = 4 }
+        })
+    end
 
   print("Frame after creation:", frame)
   
