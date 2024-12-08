@@ -71,12 +71,14 @@ function WCP.UI.CthunFrame.create()
   end)
 
   -- Enable resizing
-        self.frame:SetResizable(true)
-  if self.frame:IsResizable() then
-    self.frame:SetMaxResize(WCP.UI.CthunFrame.Default_Width * 1.5, WCP.UI.CthunFrame.Default_Height * 1.5)
-    self.frame:SetMinResize(WCP.UI.CthunFrame.Default_Width / 2.0, WCP.UI.CthunFrame.Default_Height / 2.0)
+  self.frame:SetResizable(true)
+
+  -- Check if resizing methods are available
+  if self.frame.SetMaxResize then
+      self.frame:SetMaxResize(800, 800)
+      self.frame:SetMinResize(400, 400)
   else
-    print("Error: Frame is not resizable.")
+      print("SetMaxResize is not available for this frame.")
   end
 
   self.resize_area = WCP.UI.ResizeArea.attach_to(self.frame)
