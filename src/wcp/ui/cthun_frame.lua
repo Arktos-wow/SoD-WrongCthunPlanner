@@ -33,7 +33,11 @@ function WCP.UI.CthunFrame.create()
   self.frame = nil
   self.resize_area = nil
 
-  self.frame = CreateFrame("Frame", nil, UIParent)
+  self.frame = CreateFrame("Frame", "CthunRoom", nil, UIParent, BackdropTempateMixin and "BackdropTemplate")
+  if not frame.SetBackdrop then
+      Mixin(frame, BackdropTemplateMixin)
+  end
+  
   self.frame:Hide()
   self.frame:EnableMouse(true)
   self.frame:SetMovable(true)
@@ -41,9 +45,9 @@ function WCP.UI.CthunFrame.create()
   self.frame:SetHeight(WCP.UI.CthunFrame.Default_Height)
   self.frame:SetWidth(WCP.UI.CthunFrame.Default_Width)
   self.frame:SetScale(1)
+  self.frame:SetBackdrop(backdrop)
   self.frame:SetPoint("CENTER", 0, 0)
-  self.frame:BackdropTemplateMixin(backdrop)
-  self.frame:SetAlpha(1.00)
+    self.frame:SetAlpha(1.00)
   self.frame.x = self.frame:GetLeft()
   self.frame.y = (self.frame:GetTop() - self.frame:GetHeight())
 
