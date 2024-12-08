@@ -23,7 +23,7 @@ function WCP.UI.CthunFrame.create()
     local self = setmetatable({}, WCP.UI.CthunFrame)
 
     self.tiles = {}
-    self.frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
+    self.frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
 
     if not self.frame then
         print("Error: Failed to create CthunRoom frame.")
