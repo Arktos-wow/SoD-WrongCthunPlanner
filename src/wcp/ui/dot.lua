@@ -80,7 +80,13 @@ function WCP.UI.Dot.create_or_update(number, member)
     dot:update(number, member)
   end
 
-  dot:refresh()
+   for _, dot in pairs(dots) do
+        if dot.frame then
+            dot:refresh()
+        else
+            print("Skipping uninitialized dot.")
+        end
+    end
 end
 
 
@@ -185,6 +191,11 @@ function WCP.UI.Dot:set_position(x, y)
 end
 
 function WCP.UI.Dot:refresh()
+  if not self.frame then
+        print("Error: Dot frame is nil. Creating frame.")
+        self:create_frame() -- Ensure the frame is created
+    end
+
   self:update_texture()
   self:update_tooltip()
 
