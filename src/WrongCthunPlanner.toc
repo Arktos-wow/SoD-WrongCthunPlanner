@@ -1,8 +1,8 @@
-## Interface: 11305
+## Interface: 11504
 ## Title: WrongCthunPlanner
-## Author: Patrick Helm
-## Version: 0.3.3
-## Notes: C'Thun Positioning Planner
+## Author: Patrick Helm - Updated By Arktoss
+## Version: 2.0
+## Notes: C'Thun Positioning Planner for SoD
 ## SavedVariables: WCP_POSITIONS
 
 embeds.xml
