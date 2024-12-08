@@ -33,9 +33,9 @@ function WCP.UI.CthunFrame.create()
   self.frame = nil
   self.resize_area = nil
 
-  print("BackdropTemplateMixin exists:", BackdropTemplateMixin ~= nil)
+  print("Frame before creation:", frame)
   
-  self.frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
+  local frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
 frame:SetBackdrop({
     bgFile = "Interface\\AddOns\\WrongCthunPlanner\\Images\\CThun_Positioning.tga",
     edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
@@ -44,7 +44,7 @@ frame:SetBackdrop({
     insets = { left = 12, right = 12, top = 12, bottom = 12 }
 })
 
-  print("Frame created:", frame)
+  print("Frame after creation:", frame)
   
   self.frame:Hide()
   self.frame:EnableMouse(true)
