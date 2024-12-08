@@ -46,7 +46,6 @@ function WCP.UI.CthunFrame.create()
   -- Additional setup...
   self.frame:Hide()
   self.frame:EnableMouse(true)
-  self.frame:SetResizable(true)
   self.frame:SetMovable(true)
   self.frame:SetFrameStrata("FULLSCREEN")
   self.frame:SetHeight(WCP.UI.CthunFrame.Default_Height)
@@ -71,6 +70,8 @@ function WCP.UI.CthunFrame.create()
     WCP.UI.DotSwap:reset()
   end)
 
+  -- Enable resizing
+        self.frame:SetResizable(true)
   if self.frame:IsResizable() then
     self.frame:SetMaxResize(WCP.UI.CthunFrame.Default_Width * 1.5, WCP.UI.CthunFrame.Default_Height * 1.5)
     self.frame:SetMinResize(WCP.UI.CthunFrame.Default_Width / 2.0, WCP.UI.CthunFrame.Default_Height / 2.0)
