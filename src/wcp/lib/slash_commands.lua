@@ -6,7 +6,7 @@ function WCP.LIB.SlashCommands.handle(cmd)
   if (cmd == "help") then
     private.help()
   elseif (cmd == "show" or cmd == "" or cmd == nil) then
-    private.show()
+    private.Show()
   elseif (cmd == "hide") then
     private.hide()
   elseif (cmd == "reset") then
@@ -57,13 +57,13 @@ function private.version()
 end
 
 -- /wcp show
-function private.show()
-  WCP.frame:show()
+function private.Show()
+  WCP.frame:Show()
 end
 
 -- /wcp hide
-function private.hide()
-  WCP.frame:hide()
+function private.Hide()
+  WCP.frame:Hide()
 end
 
 -- /wcp reset
