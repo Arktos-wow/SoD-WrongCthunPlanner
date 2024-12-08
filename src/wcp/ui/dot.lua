@@ -191,9 +191,23 @@ function WCP.UI.Dot:set_position(x, y)
 end
 
 function WCP.UI.Dot:refresh()
-  if not self.frame then
-        print("Error: Dot frame is nil. Creating frame.")
-        self:create_frame() -- Ensure the frame is created
+ if self.isRefreshing then
+        print("Refresh is already in progress. Skipping...")
+        return
+    end
+
+    self.isRefreshing = true
+
+    -- Check if the frame exists before creating it
+    if not self.frame then
+        print("Frame does not exist. Creating...")
+        self:create_frame()
+    else
+        print("Frame exists. Refreshing...")
+        -- Frame-specific refresh logic here
+    end
+
+    self.isRefreshing = false
     end
 
   self:update_texture()
