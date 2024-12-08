@@ -1,24 +1,38 @@
 WCP.UI.Header = {}
 
 function WCP.UI.Header.attach_to(parent)
-  local header = CreateFrame("Frame", nil, parent)
-  header:SetPoint("TOP", parent, "TOP", 0, 12)
-  header:SetWidth(256)
-  header:SetHeight(64)
-  header:SetBackdrop({
-    bgFile = "Interface\\DialogFrame\\UI-DialogBox-Header"
-  })
+    -- Create the header frame with BackdropTemplateMixin
+    local header = CreateFrame("Frame", nil, parent, BackdropTemplateMixin and "BackdropTemplate")
+    header:SetPoint("TOP", parent, "TOP", 0, 12)
+    header:SetSize(256, 64) -- Combines SetWidth and SetHeight
 
-  header:SetScript("OnMouseDown", function()
-    parent:StartMoving("TOPLEFT")
-    parent:SetUserPlaced(true)
-  end)
+    -- Ensure BackdropTemplateMixin is available before setting the backdrop
+    if header.SetBackdrop then
+        header:SetBackdrop({
+            bgFile = "Interface\\DialogFrame\\UI-DialogBox-Header"
+        })
+    else
+        print("Error: SetBackdrop is not available for the header frame.")
+    end
 
-  header:SetScript("OnMouseUp", function()
-    parent:StopMovingOrSizing()
-  end)
+    -- Allow dragging the parent frame using the header
+    header:SetScript("OnMouseDown", function()
+        if parent:IsMovable() then
+            parent:StartMoving()
+            parent:SetUserPlaced(true)
+        end
+    end)
 
-  local title = header:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-  title:SetPoint("CENTER", header, "CENTER", 0, 12)
-  title:SetText("WrongCthun Planner")
+    header:SetScript("OnMouseUp", function()
+        if parent:IsMovable() then
+            parent:StopMovingOrSizing()
+        end
+    end)
+
+    -- Create the title text
+    local title = header:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+    title:SetPoint("CENTER", header, "CENTER", 0, 0)
+    title:SetText("WrongCthun Planner")
+
+    return header
 end
