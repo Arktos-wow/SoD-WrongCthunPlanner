@@ -191,7 +191,7 @@ function WCP.UI.Dot:set_position(x, y)
 end
 
 function WCP.UI.Dot:refresh()
- if self.isRefreshing then
+    if self.isRefreshing then
         print("Refresh is already in progress. Skipping...")
         return
     end
@@ -207,9 +207,8 @@ function WCP.UI.Dot:refresh()
         -- Frame-specific refresh logic here
     end
 
-    self.isRefreshing = false
-    end
-
+  self.isRefreshing = false
+  
   self:update_texture()
   self:update_tooltip()
 
