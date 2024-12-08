@@ -25,31 +25,25 @@ end
 
 -- Create Main Frame
 function WCP.UI.CthunFrame.create()
-  local self = {}
+    local self = {}
+    setmetatable(self, WCP.UI.CthunFrame)
 
-  setmetatable(self, WCP.UI.CthunFrame)
+    self.tiles = {}
+    self.frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
 
-  self.tiles = {}
-  self.frame = nil
-  self.resize_area = nil
-
-  print("Frame before creation:", frame)
-  
-  if not self.frame then
-        self.frame = CreateFrame("Frame", "CthunRoom", UIParent, BackdropTemplateMixin and "BackdropTemplate")
-        self.frame:SetSize(500, 500)
-        self.frame:SetPoint("CENTER")
-        self.frame:SetBackdrop({
-            bgFile = "Interface\\AddOns\\WrongCthunPlanner\\Images\\CThun_Positioning.tga",
-            edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-            tile = false,
-            edgeSize = 32,
-            insets = { left = 4, right = 4, top = 4, bottom = 4 }
-        })
-    end
-
+    -- Frame initialization logic
+    self.frame:SetSize(500, 500)
+    self.frame:SetPoint("CENTER")
+    self.frame:SetBackdrop({
+        bgFile = "Interface\\AddOns\\WrongCthunPlanner\\Images\\CThun_Positioning.tga",
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        tile = false,
+        edgeSize = 32,
+        insets = { left = 4, right = 4, top = 4, bottom = 4 }
+    })
   print("Frame after creation:", frame)
-  
+
+  -- Additional setup...
   self.frame:Hide()
   self.frame:EnableMouse(true)
   self.frame:SetMovable(true)
@@ -116,6 +110,8 @@ function WCP.UI.CthunFrame:resize()
   for _, child in pairs(childrens) do
     if child ~= self.resize_area then
       child:SetScale(scale)
+    else
+      print("Warning: Invalid child detected during resize.")
     end
   end
 
