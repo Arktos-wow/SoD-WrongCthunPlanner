@@ -30,4 +30,4 @@ wcp/ui/opacity_slider.lua
 wcp/ui/resize_area.lua
 
 # Init
-WrongCthunPlanner.lua
+wcp.lua
