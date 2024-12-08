@@ -34,10 +34,7 @@ function WCP.UI.CthunFrame.create()
   self.resize_area = nil
 
   self.frame = CreateFrame("Frame", "CthunRoom", nil, UIParent, BackdropTempateMixin and "BackdropTemplate")
-  if not frame.SetBackdrop then
-      Mixin(frame, BackdropTemplateMixin)
-  end
-  
+    
   self.frame:Hide()
   self.frame:EnableMouse(true)
   self.frame:SetMovable(true)
